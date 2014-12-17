@@ -80,15 +80,16 @@ function dotime(){
   
 
   var color = 0;
-	color = color | (month & 14); 
-	color = color << 2;  //only shifting left two because we are dropping least 
+	color = color | (month + 1 & 14); 
+	color = color << 4;  //only shifting left 4 because we are dropping least 
                        //significant bit. 
   
+  
   color = color | day; 
-  color = color << 5; 
+  color = color << 4; 
   
   color = color | hours; 
-  color = color << 4; 
+  color = color << 6; 
   
   color = color | mins; 
   color = color << 6; 
@@ -103,7 +104,8 @@ function dotime(){
   if (secs < 10) { secs = "0" + secs };  
 	
 	$("#t").html(hours +" : "+ mins +" : "+ secs);
-	$("#h").html(hex);
+  $("#h").html(hex); 
+	//$("#h").html(color.toString(2));
 	
 	document.body.style.background = hex;
 	
