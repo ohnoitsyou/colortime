@@ -80,8 +80,9 @@ function dotime(){
   
 
   var color = 0;
-	color = color | (month & 7); 
-	color = color << 3; 
+	color = color | (month & 14); 
+	color = color << 2;  //only shifting left two because we are dropping least 
+                       //significant bit. 
   
   color = color | day; 
   color = color << 5; 
@@ -93,8 +94,9 @@ function dotime(){
   color = color << 6; 
   
   color = color | secs; 
-  	
-	var hex = "#0" + color.toString(16); 
+	
+	var hex = color.toString(16); 
+  hex = (hex.length == 6 ? "#" + hex : "#0" + hex); 
  
   if (hours < 10) { hours = "0" + hours }; 
   if (mins < 10) { mins = "0" + mins }; 
