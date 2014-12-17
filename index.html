@@ -70,7 +70,7 @@ function dotime(){
   $("body").css({"transition": "all 0.8s", "-webkit-transition": "all 0.8s"});
 
   var d = new Date();
-  var month = d.getMonth();
+  var month = d.getMonth() + 1;
   var day = d.getDate();
   var hours = d.getHours();
   var mins = d.getMinutes();
@@ -81,7 +81,7 @@ function dotime(){
 
 
   var color = 0;
-  color = color | (month + 1 & 14);
+  color = color | (month & 14);
   color = color << 4;  //only shifting left 4 because we are dropping least
                        //significant bit.
 
